@@ -39,6 +39,29 @@ using System;
 Console.WriteLine("A top-level statement");
 ```
 
+### Pattern matching
+
+```csharp
+public static bool IsLetter(this char c) =>
+    c is >= 'a' and <= 'z' or >= 'A' and <= 'Z';
+
+// new check for null
+if (e is not null) { ... }
+```
+
+### Naive sized integers
+    * Integer types sized to native machine at runtime
+
+```csharp
+    nint, nuint
+```
+
+### Simplier coding
+
+```csharp
+    // no type needed with new();
+    List<Customer> Customers = new();
+```
 ## Add a json config file in program
 
 ```csharp
