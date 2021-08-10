@@ -1,5 +1,23 @@
 # C#
 
+## Publish Single File
+
+Must add the following to the project file:
+
+    <PropertyGroup>
+        <PublishSingleFile>true</PublishSingleFile>
+    </PropertyGroup>
+
+Or using CLI, define it as a parameter:
+
+    dotnet publish -r linux-x64 -p:PublishSingleFile=true --self-contained true 
+
+In Visual Studio, make these changes to `Publish`
+
+    * Deployment-mode: Self-contained
+    * Target runtime: win-x64
+    * File publish options: Produce single file
+
 ## C# v9
     https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-9
 
