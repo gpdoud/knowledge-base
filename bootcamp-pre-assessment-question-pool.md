@@ -53,13 +53,17 @@
     All motorcycles are vehicles
     Some vehicles are electric
     Therefore all motorcycles are electric
-    true/(false)/(uncertain)
+    true/false/(uncertain)
 
         All sedans are cars
         Some cars are electric
         Therefore all sedans are electric
-        true/(false)/uncertain
+        true/false/(uncertain)
 
+        All A are B
+        Some B are C
+        Therefore all A are C
+        true/false/(uncertain)
 
     Some workers are not contractors
     Some contractors are expensive
