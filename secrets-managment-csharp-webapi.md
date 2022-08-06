@@ -17,3 +17,16 @@ To initiate secrets management for a project:
 
 To create a secret for the project:
 - `dotnet user-secrets set "key" "value"` (i.e. `dotnet user-secrets set "webapi" "ABC123"`)
+
+To simulate a more complex JSON file like:
+```
+{
+    "ConfigSettings": {
+        "WebApi": "ABC123",
+        "ConnStr": "server=localhost\sqlexpress;database=TestSecreta;trusted_connection=true;"
+    }
+}
+```
+- `dotnet user-secrets "ConfigSettings:WebApi" "ABC123"`
+- `dotnet user-secrets "ConfiguSettings:ConnStr" "server=localhost\sqlexpress;database=TestSecreta;trusted_connection=true;"`
+ 
