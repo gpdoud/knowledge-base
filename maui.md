@@ -78,3 +78,16 @@
     <VerticalStackLayout Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
     <!--XAML for other controls goes here -->
     </VerticalStackLayout>
+
+# Navigation
+
+* Flyout
+* Tab
+* Stack
+
+# Allow REST using http
+
+    [Project]/Platforms/Android/MainApplication.cs
+
+    [Application(UsesCleartextTraffic = true)]
+    public class MainApplication : MauiApplication { .. }
