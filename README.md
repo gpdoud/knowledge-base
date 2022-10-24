@@ -6,3 +6,4 @@
 - [Git CLI Commands](https://github.com/gpdoud/knowledge-base/blob/main/git-commands.md)
 - [Install/Update the .Net Core sdk in Ubuntu Linux](upgrade-netcore-sdk-linux.md)
 - [WebAssembly](https://github.com/gpdoud/knowledge-base/blob/main/webassembly.md)
+- [Web printing](https://github.com/gpdoud/knowledge-base/blob/main/web/web-printing.md)
