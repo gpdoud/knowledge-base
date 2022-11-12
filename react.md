@@ -20,6 +20,18 @@ function PageTitle(props) {
 - Wrap multiple JSX statements in parentheses
 - `className` is used to render the `class` attribute
 - In JSX, opening tags only (like `<input>`) require the trailing slash (`<input />`)
+- Wrap code in single braces to treat is like ordinary Javascript (`<span> {2 + 3} </span>`)
+
+### Adding events
+
+```jsx
+  function alert() {
+    alert("This is an alert");
+  }
+  const html = (
+    <button onClick={alert}>Click me!</button>
+  )
+```
 
 ### Add React to existing project
 
