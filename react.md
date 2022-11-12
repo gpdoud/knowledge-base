@@ -17,6 +17,8 @@ function PageTitle(props) {
 - There should be a single parent element returned.
 - If the function takes parameters, the function should be declared as `props`
 - Interpolation requires wrapping variables with single braces
+- Wrap multiple JSX statements in parentheses
+- `className` is used to render the `class` attribute
 
 ### Add React to existing project
 
