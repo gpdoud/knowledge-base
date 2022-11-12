@@ -22,6 +22,19 @@ function PageTitle(props) {
 - In JSX, opening tags only (like `<input>`) require the trailing slash (`<input />`)
 - Wrap code in single braces to treat is like ordinary Javascript (`<span> {2 + 3} </span>`)
 
+### Components
+
+```jsx
+  class MyComponent extends React.Component {
+    render() {
+      <h1>Welcome to My Component</h1>
+    }
+  }
+  ReactDOM.render(
+    <MyComponent />,
+      document.getElementById('app')
+```
+
 ### Adding events
 
 ```jsx
@@ -31,6 +44,41 @@ function PageTitle(props) {
   const html = (
     <button onClick={alert}>Click me!</button>
   )
+```
+
+### map
+
+`map` is like a `foreach` in C#. It is a function that iterates through a collection using lambda syntax.
+
+```jsx
+  const names = [ 'Greg', 'Cindy', 'Nick', 'Ken' ];
+  names.map(name => <li>{name}</li>);
+  // results
+  // <li>Greg</li>
+  // <li>Cindy</li>
+  // <li>Nick</li>
+  // <li>Ken</li>
+```
+
+Each item can include the jsx `key` attribute to help keep the order of the collection.
+
+```jsx
+  names.map( (name, i) => <li key={'fred_'+i}>{name}</li>
+
+### Using &&
+
+The logial and [&&] can be used to show or hide some jsx. Below, if `isBlack` is true, the 'Black' option will be included.
+
+```jsx
+  let isBlack = true;
+  const options = (
+    <ul>
+      <li>Red</li>
+      <li>Green</li>
+      <li>Blue</li>
+      { isBlack && <li>Black</li> }
+    </ul>
+  );
 ```
 
 ### Add React to existing project
