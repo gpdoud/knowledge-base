@@ -35,6 +35,33 @@ function PageTitle(props) {
       document.getElementById('app')
 ```
 
+- `props` can be displayed by referencing `this.props`.
+- `props` and `state` are the only dynamic properties
+- Attribute values must surround the value with braces UNLESS the value is a string.
+
+### State
+
+Keeps the state of a component
+
+```jsx
+  class MyClass extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { a: "aaa", b: "bbb", ... }
+      this.changeState = this.changeState.bind(this);
+    }
+    changeState() {
+      this.setState({ z: "zzz"});
+    }
+    render() {
+      return ( ... )
+    }
+  }
+```
+
+- The changeState.bind is to reestablish the `this`.
+- The `setState(..)` CANNOT be called from inside the `render()` function
+
 ### Adding events
 
 ```jsx
