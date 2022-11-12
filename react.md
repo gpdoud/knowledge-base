@@ -19,6 +19,7 @@ function PageTitle(props) {
 - Interpolation requires wrapping variables with single braces
 - Wrap multiple JSX statements in parentheses
 - `className` is used to render the `class` attribute
+- For HTML with opening tags only (like `<input>`), the trailing slash is optional
 
 ### Add React to existing project
 
