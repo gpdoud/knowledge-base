@@ -21,6 +21,9 @@ function PageTitle(props) {
 - `className` is used to render the `class` attribute
 - In JSX, opening tags only (like `<input>`) require the trailing slash (`<input />`)
 - Wrap code in single braces to treat is like ordinary Javascript (`<span> {2 + 3} </span>`)
+- Add Bootstrap by:
+  - `npm i bootstrap`
+  - At the top of index.js: `import 'bootstrap/dist/css/bootstrap.css'`
 
 ### Components
 
