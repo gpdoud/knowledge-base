@@ -39,6 +39,42 @@ function PageTitle(props) {
 - `props` and `state` are the only dynamic properties
 - Attribute values must surround the value with braces UNLESS the value is a string.
 
+### Routing
+
+- Install `react-routing-dom` to project
+- Create `Routing.js` to define the routes
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { 
+  createBrowserRouter, RouterProvider, Route
+} from 'react-router-dom';
+import App from './App';
+
+const routes = createBrowserRouter([
+    { path: "/", element: <App /> },
+    { path: "/home", element: <p>Home works!</p> },
+    { path: "/about", element: <p>About works!</p> },
+]);
+
+export default routes;
+```
+- Update `index.js` to the following:
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
+import App from './App';
+import routes from './Routing';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <RouterProvider router={routes} />
+  </React.StrictMode>
+);
+```
+
 ### State
 
 Keeps the state of a component
