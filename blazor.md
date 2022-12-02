@@ -7,7 +7,19 @@
 dotnet new razorcomponent -n Todo -o Pages
 ```
 - Razor component file names must start with a capital letter (i.e. Todo.razor)
-- 
+- Start binding process with: `dotnet watch`
+- Creating a class used as a service
+```
+public class SampleService { .. }
+// in builder area of Program.cs
+builder.Services.AddSingleton<SampleService>();
+// to inject service into component
+@inject SampleService sampSvc;
+// calling the service from the OnInitializedAsync()
+protected override async Task OnInitializedAsync() {
+  sampSvc.xxx()
+}
+```
 
 ## Page
 - @page directive defines the route:  (i.e. "/home")
