@@ -2,6 +2,12 @@
 
 - Blazor server run on the server (similar to MVC)
 - Blazor WebAssembly runs solely on the browser
+- Create a new blazor page with:
+```
+dotnet new razorcomponent -n Todo -o Pages
+```
+- Razor component file names must start with a capital letter (i.e. Todo.razor)
+- 
 
 ## Page
 - @page directive defines the route:  (i.e. "/home")
@@ -10,6 +16,15 @@
   * [Parameter] attribute defines a property as a url path variable
 ```
     [Parameter]
-    public int Id { get; set; } = 0;
+    public int id { get; set; } = 0;
 ```
-- 
+- @bind to bind a C# variable to an HTML object
+```
+<input @bind={id} />
+```
+- Function to call on button click
+```
+<button @onclick={clicked}>Click Me!</button>
+//
+private void clicked() { .. }
+```
