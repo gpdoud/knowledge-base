@@ -8,6 +8,11 @@ dotnet new razorcomponent -n Todo -o Pages
 ```
 - Razor component file names must start with a capital letter (i.e. Todo.razor)
 - Start binding process with: `dotnet watch`
+- Component can be initialized in: 
+```
+protected override void OnInitialized() { .. } OR
+protected override async Task OnInitializedAsync() { .. }
+```
 - Creating a class used as a service
 ```
 public class SampleService { .. }
