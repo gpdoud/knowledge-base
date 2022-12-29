@@ -56,16 +56,18 @@ Standalone components execute without any NgModule.
 
 6. Standalone Component Code
 
-    @Component({
-        standalone: true,
-        selector: "app-my-page",
-        template: `
-            <h1>{{ title }}</h1>
-        `,
-        styles: [
-            "h1 { color: blue; }"
-        ]
-    })
-    export class AppMyPageComponent {
-        title = "My Standalone Component";
-    }
+```ng
+@Component({
+    standalone: true,
+    selector: "app-my-page",
+    template: `
+        <h1>{{ title }}</h1>
+    `,
+    styles: [
+        "h1 { color: blue; }"
+    ]
+})
+export class AppMyPageComponent {
+    title = "My Standalone Component";
+}
+```
