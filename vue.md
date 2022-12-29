@@ -177,6 +177,15 @@ Monitors properties and executes function on changes
         console.debug('x =>', x);
     });
 
+    // watching multiple properties
+    const balance = ref(0);
+    const rate = ref(0);
+    const months = ref(0);
+    const interest = ref(0);
+    watch([balance, rate, months], ([balance, rate, months], [prevBal, prevRate, prevMonths) => {
+        interest.value = balance * (rate / 12) * months;
+    })
+
 ## Events
 
 Child to parent communication
