@@ -54,7 +54,7 @@ Standalone components execute without any NgModule.
 
     <app-my-page></app-my-page>
 
-## Standalone Component Code
+6. Standalone Component Code
 
     @Component({
         standalone: true,
