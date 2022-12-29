@@ -16,7 +16,9 @@ Install the LTS version of `NodeJs.org`. (you many have to restart your machine)
 
 Install the Angular CLI. This is used to create projects, build projects, create production applications,  and generate all the object used by Angular applications.
 
-    npm i -g @angular/cli
+```
+npm i -g @angular/cli
+```
 
 ## Upgrading an existing project
 
@@ -32,27 +34,37 @@ Standalone components execute without any NgModule.
 
 1. Create a project as usual
 
-    ng new <my-app>
+```
+ng new <my-app>
+```
 
 2. Generate a standalone component
 
-    ng g c my-page --standalone --flat --inline-style --inline-template
+```
+ng g c my-page --standalone --flat --inline-style --inline-template
+```
 
 3. Delete the following files:
-    
-    app.module.ts
-    app.component.ts,html,css
+
+```ng    
+app.module.ts
+app.component.ts,html,css
+```
 
 4. Update the `main.ts`
 
-    import {bootstrapApplication} from '@angular/platform-browser';
-    import {MyPageComponent} from './app/my-page.component';
+```ng
+import {bootstrapApplication} from '@angular/platform-browser';
+import {MyPageComponent} from './app/my-page.component';
 
-    bootstrapApplication(MyPageComponent);
- 
+bootstrapApplication(MyPageComponent);
+```
+
 5. Update the `index.html`
 
-    <app-my-page></app-my-page>
+```
+<app-my-page></app-my-page>
+```
 
 6. Standalone Component Code
 
