@@ -4,7 +4,39 @@ This document was created to help provide solution to those less experienced pro
 
 ## Table of Contents
 
-[How to count the number of unique occurances within a collection](#how-to-count-the-number-of-unique-occurances-within-a-collection)
+- [Generate the Fibonacci sequence](#generate-the-fibonacci-sequence)
+- [How to count the number of unique occurances within a collection](#how-to-count-the-number-of-unique-occurances-within-a-collection)
+
+## Generate the Fibonacci sequence
+
+The Fibonacci numbers are a sequence of numbers starting with 1, 1 where the next number is the sum of the previous two numbers: `1, 1, 2, 3, 5, 8, etc.`. It is relatively easy to generate but the sequence is somewhat unique and does not occur that often in other applications.
+
+```cs
+// generate the number up to 1000
+const int maxNbr = 1000;
+// a & b are the last two numbers generated
+// both are initialized to 1 
+int a = 1;
+int b = 1;
+// c is the most current generated number
+int c = -1;
+// output the first two numbers
+Console.Write($"{a}, {b}");
+// infinite loop will break
+while(true) {
+    // calculate the next number
+    c = a + b;
+    // check if the number if greater than the max
+    if (c > maxNbr) break;
+    // if not, output the number
+    Console.Write($", {c}");
+    // set a & b to the values of b & c
+    a = b;
+    b = c;
+}
+// output
+1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987
+```
 
 ## How to count the number of unique occurances within a collection
 
@@ -49,10 +81,7 @@ keys.Sort();
 foreach (var key in keys) {
     Console.WriteLine($"Char {key} occurs {charsDict[key]} time(s).");
 }
-```
-The output looks like this:
-
-```cs
+// The output looks like this:
 Char A occurs 15 time(s).
 Char B occurs 4 time(s).
 Char C occurs 9 time(s).
