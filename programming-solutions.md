@@ -4,18 +4,28 @@ This document was created to help provide solution to those less experienced pro
 
 ## Table of Contents
 
-- [Generate the Fibonacci sequence](#generate-the-fibonacci-sequence)
-- [Count the number of unique occurances within a collection](#count-the-number-of-unique-occurances-within-a-collection)
-- [Check if string value is one of finite set](#check-if-string-value-is-one-of-finite-set)
+- Git/GitHub
+- SQL
+- C#
+    - [Generate the Fibonacci sequence](#generate-the-fibonacci-sequence)  
+    - [Count the number of unique occurances within a collection](#count-the-number-of-unique-occurances-within-a-collection)
+    - [Check if string value is one of a finite set](#check-if-string-value-is-one-of-a-finite-set)
+- Entity Framework Core
+- Html
+- Css
+- JavaScript
+- Angular
+- Misc
 
-## Check if string value is one of finite set
+## Check if string value is one of a finite set
 
 Sometimes, trying to validate a string value causes some headaches because the value cannot be any string but must be from a finite set of string values. When done intractively, the list can be provided to the user in the form of a dropdown list where only valid selections can be made. But what about data passed into a program from another source.
 
 While this can be done using a series of `if()` statements or with the `switch()` statement, a simplier approach is to create a string of all the valid values then check whether the target string exists as a substring. This can be done with a single statement.
 
 ```cs
-bool valid = "|OH|IN|KY|".Contains("|OH|"); // returns true
+string targetStateCode = "OH";
+bool valid = "|OH|IN|KY|".Contains($"|{targetStateCode}|"); // returns true
 ```
 
 In this example, imagine getting a two character code that should represent a state code that must be either 'OH', 'IN', or 'KY'. All three state codes are included in a single string with each one surrounded by vertical bars. The purpose of the vertical bars is so that the state code to check does not match part of two different state codes that happen to be located next to each other. Here what could happen if the vertical bars (or any other symbol) is used.
@@ -23,8 +33,9 @@ In this example, imagine getting a two character code that should represent a st
 Here is the same type of validity check though without the vertical bars. Now assume the state code for Hawaii (HI) is checked. It does not match 'OH', 'IN', or 'KY', but it does match the 'H' of 'OH' and the 'I' of 'IN'. This would result in a false valid return value.
 
 ```cs
-bool valid = "OHINKY".Contains("HI"); // returns true incorrectly
-bool valid = "-OH-IN-KY-".Contains("-HI-"); // returns false
+string targetStateCode = "HI";
+bool valid = "OHINKY".Contains($"{targetStateCode}"); // returns true incorrectly
+bool valid = "-OH-IN-KY-".Contains($"-{targetStateCode}-"); // returns false
 ```
 
 ## Generate the Fibonacci sequence
