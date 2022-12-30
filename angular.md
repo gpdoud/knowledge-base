@@ -57,6 +57,14 @@ name = "";
 
 In the two-way binding, the property `name` is set to an empty string then displayed in the `<input>` tag. The user can modify the text for the `name` and that will change the `name` property immediately. The `<label></label>` does one-way binding and will always display the current value of `name`.
 
+## Modules
+
+## Components
+
+## Services
+
+## Pipes
+
 ## Standalone Components (requires v15)
 
 Standalone components execute without any NgModule.
@@ -64,7 +72,7 @@ Standalone components execute without any NgModule.
 1. Create a project as usual
 
 ```
-ng new <my-app>
+ng new [my-app]
 ```
 
 2. Generate a standalone component

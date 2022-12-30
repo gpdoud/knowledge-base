@@ -5,7 +5,7 @@ This document was created to help provide solution to those less experienced pro
 ## Table of Contents
 
 - [Generate the Fibonacci sequence](#generate-the-fibonacci-sequence)
-- [How to count the number of unique occurances within a collection](#how-to-count-the-number-of-unique-occurances-within-a-collection)
+- [Count the number of unique occurances within a collection](#count-the-number-of-unique-occurances-within-a-collection)
 
 ## Generate the Fibonacci sequence
 
@@ -38,7 +38,7 @@ while(true) {
 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987
 ```
 
-## How to count the number of unique occurances within a collection
+## Count the number of unique occurances within a collection
 
 Given a collection of values, whether atomic values (strings, numbers, etc.) or objects (records, tuples, etc.), count the number of occurances of values for a variety of reasons. It may be to display the value that occurs the most or least frequently or it may be simply to provide the number of occurances for each value. Using a generic key/value pair collection class is a good tool to address this issue.
 
