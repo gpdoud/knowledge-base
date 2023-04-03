@@ -1,0 +1,353 @@
+# Python 3.11
+
+## Variables
+
+Variables don't need special declaration keywords 
+
+```py
+# No need to use 'var' or 'let'
+i = 0
+```
+
+Multiple variables can be assigned in one statement. 
+    
+```py
+# This assigns a to 1, b to 2, and c to 3;
+a, b, c = 1, 2, 3
+```
+
+## Statements
+
+### if
+
+Boolean condition line must end with a COLON and the body must be indented. The optional ELSE clause must also end with a COLON
+
+_Format_:
+
+```py
+if {boolean-expression}:
+    {true-condition}
+{else:
+    false-condition}
+```
+
+_Examples_:
+
+    ```py
+    # prints one of two statements based on the value of i
+    if i < 10:
+        print('I is less than 10')
+    else:
+        print('I is greater than or equal to 10')
+    ```
+
+### for
+
+Iterates through a collection similar to `foreach()`
+
+One suggestion in the docs is to pass a copy of a collection rather than the actual collection.
+
+_Format_:
+
+```py
+# a blank line terminates the body
+for {var} in {collection}:
+    {body}
+```
+
+_Examples_:
+
+```py
+ints = [ 1, 2, 3, 4, 5 ]
+sum = 0
+for i in ints:
+    sum += i
+
+print('Sum is', sum)
+```
+
+### range
+
+Easy way to provide a range of numbers
+
+_Format_: 
+
+```py
+range({start}, end, {increment})
+```
+
+_Examples_:
+
+```py
+# starting value is zero by defaul
+# the parameter value is NEVER included
+ints = range(6) # [0,1,2,3,4,5]
+
+# can pass the starting number
+ints = range(2,7) # [2,3,4,5,6]
+
+# can also include the increment
+ints = range(1,11,2) # [1,3,5,7,9] 
+```
+
+### pass
+
+Pass does nothing but is a valid statement.
+
+_Format_:
+
+```py
+pass
+```
+
+_Examples_:
+
+```py
+# wait for keyboard interrupt
+while True:
+    pass
+```
+
+### match
+
+Similar to a `switch` statement in C, C++, or C#
+
+_Format_:
+
+```py
+match: {variable}:
+    case {value}:
+        return {value}
+    case {value1} | {value2} | {value3}:
+        return {value}
+    ...
+    case _: # underscore
+        return {value}
+```
+
+_Examples_:
+```py
+```
+
+## functions
+
+Functions must be defined with the `def` keyword followed by the function name and a pair parentheses. 
+
+Functions always return either a value or `None`.
+
+Parameters in functions can be defined with default values and can be called either with or without the parameter names. Special characters in the parameter list may force parameters to be called without parameter names, with parameter names, or optionally with parameter names.
+
+A parameter can be defined that takes a variable number of values similar to `args` in C#. Simply define the parameter name with a leading asterisk (i.e. *args) and it becomes a list of values rather than a single value.
+
+The first line of the body should include the _docstring_ which is surrounded by triple double quotes. Some tool use that to create documentation about the functions. The first line should be short and describe the function. The second line should be blank and all following lines should describe the parameters and the function body and the return value (if any).
+
+_Format_:
+
+```py
+def display(code=0, msg='What message?'):
+    """Documents the function (docstring)"""
+    print('Code is', code, ', message is', msg)
+```
+
+_Examples_:
+
+```py
+# function with 2 parameters named n & pow
+def cube(n, pow=2):
+    return n ** pow;
+
+# called positionally with specific values for each parameter 
+cube(3, 3) 
+# called by parameter name n allowing pow to default to 2
+cube(n=3)
+# called with named parameters regardless of position
+cube(pow=4, n=5) 
+```
+
+## lambda
+
+Lambda expression can create small functions that can be used by other functions.
+
+Some of the variables in the lambda must be in the original function and the remainders will be satisfied by the new function created. 
+
+In the format section below, the function `power` takes a parameter called `pow`. The lambda statement references a variable `x` that is not declared in the parameter list. After the colon, the expression raised the value in `x` to the power of `pow`. Assigning the `power` function to another variable and passing in the value 3 defines a new function that raised any value passed into `f3` to the power of 3 as illustrated when `f3(2)` evaluates to 8 (i.e. `2 ** 3 = 8`)
+
+_Format_:
+
+```py
+def fn(x):
+    return lambda y : x + y
+```
+
+_Examples_:
+
+```py
+def power(pow):
+    return lambda x: x ** pow
+
+f3 = power(3)
+f3(2)
+# returns 8
+``` 
+
+## annotations
+
+Annotations are optional metadata descriptions for functions parameters and return types. For parameters, a colon is added after the parameter name followed by the type for the parameter (i.e. `s: str` or `i: int`). For the return type, after the closing parametheses, the `->` symbols is added followed by the type of data returned (i.e. `-> str` or `-> int` or `-> void`)
+
+_Examples_:
+
+```py
+def msg(code: int, message: str) -> str:
+    return code, message
+```
+
+## collections
+
+### list
+
+The List is a simple collection of instances. Instances can be added to the front or back of the collection, added within the collection, or removed from the collection
+
+_Methods_:
+
+* `append(x)` - add to the end
+* `extend(xs: iterable)` - adds items to end
+* `insert(i, x)` - inserts x before index i
+* `remove(x)` - removes x
+* `pop()` - returns and removes item at the end
+* `clear()` - removes all items
+* `index(i)` - returns item at index i
+* `count(x)` - returns count of x
+* `sort(list)` - sorts the items in place
+* `reverse()` - reverses items in place
+* `copy()` - returns copy of collection
+* `del x` - removes items
+
+### tuples
+
+Tuples are an immutable collection of items surrounded by parentheses. They are created by separating items by a comma.
+
+To create a tuple with only a single value (why would anyone do this?), end the item list with a comma. (i.e. tuple = "abc", )
+
+Tuples can be unpacked by placing individual variables on the left of the equal sign from the tuple.
+
+```py
+aTuple = (1, 'abc', True)
+nbr, str, bool = aTuple
+# nbr=1, str='abc', bool=True
+```
+
+### sets
+
+A set is an unordered collection with no duplicates surrounded by braces. It can be created with `set()` or `{}`. To create an empty set, `set()` must be used because `{}` will create an empty dictionary.
+
+Processing on sets can include union, intersection, etc.
+
+```py
+set = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }
+evens = [ x for x in set if x % 2 == 0 ]
+# evens is { 2, 4, 6, 8, 10 }
+```
+
+### dictionaries
+
+A dictionary is a collection of _key_:_value_ pairs where each key must be unique and must be an immutable type like number or string. Dictionaries are surrounded by braces `{}` with the _key_:_value_ pairs separated by a comma and each _key_ and _value_ separated by a colon.
+
+To create a dictionary with items with a constructor, use the `dict()` function and the following syntax:
+
+```py
+d = dict([(1,'a'), (2,'b'), (3,'c')])
+# d is {1: 'a', 2: 'b', 3: 'c'}
+```
+
+Iterating through a dictionary can be done with a `for` loop like this:
+
+```py
+for k, v in d.items():
+    print(k, v)
+```
+
+`list(dictionary)` will put all the dictionary keys in a list in the order they were inserted.
+
+`sorted(dictionary)` will put the keys in a list in sorted sequence.
+
+`{key} in dictionary` checks whether a key exists in the dictionary
+
+### boolean operators
+
+The boolean operators are `and`, `or`, and `not` and they are short-circuit operators.
+
+## modules
+
+Modules are source files ending in `.py`. To use a module, it must be imported. After importing, functions in the modules may be executed by listing the module followed by a dot followed by the function name.
+
+If a particiular module function will be used frequently, a shortcut can be created like this:
+
+```py
+import fibo
+fibo.test()
+test = fibo.test
+test() # calles fibo.test()
+```
+
+One or more functions can be imported from a module without actually importing the module.
+
+```py
+# module is fibo.py with fib1() and fib2()
+from fibo import fib1, fib2
+# can execute fib1() and fib2() without module name
+```
+
+Module names can be aliased using `as` after the module name.
+
+```py
+import fibo as fib # use fib for fibo
+```
+
+## Standard Modules
+
+## Packages
+
+## Files
+
+`write()` operates on file objects.
+
+The standard output file is at `sys.stdout`.
+
+Interpolated string or _Formatted String Literals_ can be created by prepending an uppercase or lowercase `F` before the quotes. Then variables can be embedded in the string if surrounded by braces.
+
+```py
+fname = 'George'
+lname = 'Washington'
+print(f'{fname} {lname}')
+# outputs George Washington
+```
+
+Adding an equal sign `=` after the variable will display showing the variable name, equal sign, then value. Good for debugging.
+
+```py
+x = 7
+y = -3
+print(f'{x=} {y=}')
+# outputs: x=7 y=-3
+```
+
+To further format the output, after the variable name, placing a colon `:` and a number will defined the number of characters to reserve for the output.
+
+```py
+pi = 3.1415927
+print(f'pi = {pi:.2f}')
+# outputs: pi = 3.14
+```
+
+### formatting characters 
+
+_see_ https://docs.python.org/3/library/string.html#formatstrings
+
+- [`<`, `>`, `^`] : justify left, right, and center
+- [`,`] (comma) : use for thousands separator
+- [`s`] : display as a string (the default)
+- [`d`, `n`] : decimal number (`n` uses locale info)
+- [`f`, `F`] : fixed point (float)
+
+### reading/writing files
+
