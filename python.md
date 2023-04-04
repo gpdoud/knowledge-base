@@ -351,3 +351,125 @@ _see_ https://docs.python.org/3/library/string.html#formatstrings
 
 ### reading/writing files
 
+#### opening a file
+
+To open a file, the `open(fullpath, mode, encoding)` is used
+
+This opens the fullpath file in either read (r) or write (w) mode. Encoding should normally be `utf-8`. It is important to close the file after operations are completed. If writing to the file and not closing the file, some data written may be lost.
+
+```py
+f = ('data.txt', 'r', encoding="UTF-8")
+f.close()
+```
+
+It is good practice to use `with` when opening a file so that the file is closed after all the operations on the file are complete
+
+```py
+with open('data.txt', 'r', encoding="UTF-8") as f:
+    # automatically closed 
+```
+#### Reading the text file
+
+The contents of the file can be read with `read()` or `readline()`.
+
+`read({size})` will read the number of characters give by {size} or the entire file if no {size} is provided and returns the data as a string.
+
+`readline()` will read a single line and return it as a string or it will return and empty string if end of file.
+
+`write(x)` will write strings (for text files) or bytes (for binary files)
+
+### json
+
+JSON data can be written by importing the `json` package.
+
+Just about any data structure can be passed to `json.dumps(x)` and written out as a json file.
+
+`json.dumps(x)` will convert the contents of x to json and return it as a string.
+
+`json.load(f)` will load the contents of f as json.
+
+## exceptions
+
+## class
+
+Classes support object-oriented programming by bundling data and the methods that operate on that data.
+
+`self` is similar in Python to `this` in C# or Java. `seld` must be the first parameter in all methods within a class. No data must be passed to `self` so only any other parameter must be passed.
+
+All references to properties or methods within a class must prefix with `self`.
+
+_Format_:
+
+```py
+class Customer:
+    """Models a customer."""
+
+    def __init__(self, name, sales=0): # constructor
+        self.setName(name)
+        self.setSales(amount)
+
+    def setName(self, name):
+        self.name = name
+
+    def setSales(self, sales):
+        self.amount(sales)
+
+    def toString(self):
+        return f'name={self.name}, sales={self.sales}'
+
+```
+
+## Standard Library
+
+### os
+
+The Operating System library functions:
+
+* `os.getcwd()` - returns current working directory
+* `os.chdir(x)` - change directory
+* `os.system(x)` - execute command
+
+* `dir(os)` - returns all modules functions
+* `help(os)` - documents os functions
+
+### shutil
+
+For every day op/sys work, the `shutil` library works well
+
+* `shutil.copyfile(fromfile, tofile)` - copy fromfile to tofile
+* `shutil.move(from, to)` - move or rename from to
+
+### glob
+
+`glob` makes list of files and directories
+
+* `glob.glob("*.py")` - returns a list of files ending in ".py"
+
+### sys
+
+`sys` provides access to parameters pass when a python app is executed from the command line
+
+Output can be directed to: `stdin`, `stdout`, and/or `stderr`.
+
+```py
+sys.stderr.write('Warning: written to stderr')
+```
+
+A script can be terminated immediately with `sys.exit()`.
+
+* `sys.argv()` - provides a list of the file started and any parameters pass
+
+### argparse
+
+`argparse` is a more feature-rich argv parser. It allows starting one python program from another and passing parameters to the new program. 
+
+```py
+import argparse
+parser=argparse.ArgumentParser(
+    prog='myProgram', description='My program'
+)
+parser.add_argument('-v', '--verbose', type=bool, default=False)
+args = parser.parse_args()
+print(args)
+```
+
