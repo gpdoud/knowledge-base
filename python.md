@@ -1,6 +1,15 @@
 # Python 3.11
 
-## Variables
+## Variables and Types
+
+_Types_:
+
+- `Number`: integers, floating point, and complex
+- `String`: a sequence of characters
+- `List`: a mutable sequence of objects
+- `Tuple`: an immutable collection of objects
+- `Set`: a collection of objects without duplicates
+- `Dictionary`: an unordered collection of key/value pairs
 
 Variables don't need special declaration keywords 
 
@@ -17,6 +26,26 @@ a, b, c = 1, 2, 3
 ```
 
 ## Statements
+
+_Language key words_:
+
+| | | | | |
+|---     |---       |---        |---        |---        |
+| False  | def      | if	    | raise     | pass      |
+| None	 | del	    | import	| return    | global    |
+| True	 | elif	    | in	    | try       | continue  |
+| and	 | else	    | is	    | while     | or        |
+| as	 | except   | lambda	| with      | from      |
+| assert | finally  | nonlocal  | yield     | class     |
+| break	 | for	    | not	    |
+
+Statements can be written across multiple lines by using the backslash `\` and multiple statements can be on a single line with the semicolon `;`.
+
+```py
+if True or \
+    False:
+    print('It is True');print(' or False')
+```
 
 ### if
 
@@ -129,7 +158,30 @@ _Examples_:
 ```py
 ```
 
-## functions
+## Operators
+
+* `+`: adds numbers or concatenates strings
+* `-`: subtracts numbers
+* `*`: multiplies numbers
+* `/`: divides numbers (returns float)
+* `//`: divides integer numbers (return int)
+* `**`: raises a number to a power
+* `%`: returns remainder of int division
+* `=`: assignment
+* `+=`: sets one number to sum of both numbers
+* `-=`: sets one number to difference of both numbers
+* `*=`: sets one number to product of both numbers
+* `/=`: sets one number to division of both numbers
+* `%=`: sets one int to modulo of both ints
+
+* `==`: True if both are same value
+* `>`: True if left is larger than right
+* `>=`: True if left is larger or same as right
+* `<`: True if left is smaller than right
+* `<=`: True if left is smaller or same as right
+
+
+## Functions
 
 Functions must be defined with the `def` keyword followed by the function name and a pair parentheses. 
 
@@ -472,4 +524,75 @@ parser.add_argument('-v', '--verbose', type=bool, default=False)
 args = parser.parse_args()
 print(args)
 ```
+
+### re (regular expressions)
+
+Regular expressions provides advanced searching of strings. The toughest part of `re` is learning the syntax.
+
+```py
+re.finall(r'\bf[a-z]*', 'which foot or hand fell fastest')
+# returns: ['foot', 'fell', 'fastest']
+re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat')
+# returns: 'cat in the hat'
+```
+
+### math
+
+The `math` module provides many mathematical functions. Some commonly used business methods are:
+
+* `ceil(x)` - smallest integer greater than x
+* `floor(x)` - largest integer less than x
+* `fmod(x,y)` - modulo; (i.e. x % y in C#)
+* `fsum([x])` - precise sum of collection (better than `sum()`)
+* `pow(x,y)` - raises x to the power of y
+
+### random
+
+An implementation of randomness.
+
+* `choice([x])` - makes a random selection of one item from collection x
+* `sample([x], n) - selects n items from collection x
+* `random()` - create a random number between 0 and 1
+* `randrange(n)` - create a random integer between 0 and n
+
+## internet
+
+### Requests
+
+ref: `https://requests.readthedocs.io/en/latest/`
+
+`Requests` is a module not included in the base Python installation. It is recommended for non-trivial http communication as is needed when connecting to a remove API service.
+
+_Installation_:
+
+To install, enter the following at the command prompt (without the dollar sign):
+
+```bash
+$ python3 -m pip install requests
+```
+
+This will install the module.
+
+### smptlib
+
+This packaage can send emails.
+
+_Note: the parameter for SMPT must be a mail server_
+
+```py
+import smptlib
+server = smptlib.SMPT("mail server")
+server.sendmail('cindy@gmail.com', 'greg@gmail.com',
+    """
+    To: max@maxtrain.com
+    From: greg@doudsystems.com
+
+    This is the body of the email.
+    """
+)
+```
+
+## Dates/Times
+
+## Data compression
 
