@@ -2,9 +2,14 @@
 
 ## Variables and Types
 
+Variable names should start with a letter or underscore. After the first character, other characters can be letters, numbers, or underscores. 
+
+Separate words in a variable name by an underscore (i.e. `first_name`)
+
 _Types_:
 
 - `Number`: integers, floating point, and complex
+- `decimal`: high-precision floating point
 - `String`: a sequence of characters
 - `List`: a mutable sequence of objects
 - `Tuple`: an immutable collection of objects
@@ -24,6 +29,34 @@ Multiple variables can be assigned in one statement.
 # This assigns a to 1, b to 2, and c to 3;
 a, b, c = 1, 2, 3
 ```
+
+`decimal` is a more precise floating point type
+
+```py
+# regular floating point
+round(.70 * 1.05, 2)
+# returns 0.73
+from decimal import *
+round(Decimal('0.70') * Decimal('1.05'), 3)
+# returns 0.74
+```
+
+_Scope_:
+
+Variables exist only within the block they are defined in. Once outdide that block, the variable no longer exists.
+
+```py
+def fn(n):
+    # local scope variables
+    a, b, c = 1, 2, 3
+    return (a * (n ** 2)) + (b * n) + c
+
+# a, b, c no longer exist here. Outside of scope of function
+```
+
+_Global scope_:
+
+A variable declared outside a function is considered `global` in scope meaning any function can access it. If a function body needs to access a global variable, placing the keyword `global` before the variable name will reference the global variable.
 
 ## Statements
 
@@ -234,6 +267,11 @@ def fn(x):
 _Examples_:
 
 ```py
+pow = lambda x, p: x ** p
+
+pow(2, 4)
+# return 16
+
 def power(pow):
     return lambda x: x ** pow
 
@@ -332,6 +370,13 @@ The boolean operators are `and`, `or`, and `not` and they are short-circuit oper
 
 Modules are source files ending in `.py`. To use a module, it must be imported. After importing, functions in the modules may be executed by listing the module followed by a dot followed by the function name.
 
+The imported module can be renamed by adding the `as` keyword followed by the new name
+
+```py
+import mathematics as math
+math.add(1,2)
+```
+
 If a particiular module function will be used frequently, a shortcut can be created like this:
 
 ```py
@@ -358,6 +403,16 @@ import fibo as fib # use fib for fibo
 ## Standard Modules
 
 ## Packages
+
+Packages are groups of related modules.
+
+To create a package, create a new folder within the project folder like `c:\myProject\myPackage`
+
+Create a module named myPackage.py.
+
+Create an empty package named `__init__.py`
+
+Create other 
 
 ## Files
 
@@ -573,6 +628,20 @@ $ python3 -m pip install requests
 
 This will install the module.
 
+#### Http methods
+
+```py
+import requests
+# auth is optional
+response = requests.get(url, auth=(username, password))
+response = requests.post(url, data, 
+    headers={'content-type':'application/json'})
+response = requests.put(url, data, 
+    headers={'content-type':'application/json'})
+response = requests.delete(url)
+```
+
+
 ### smptlib
 
 This packaage can send emails.
@@ -594,5 +663,94 @@ server.sendmail('cindy@gmail.com', 'greg@gmail.com',
 
 ## Dates/Times
 
+```py
+from datetime import date
+# get today's date only
+today = date.today() 
+```
+
 ## Data compression
 
+Supports `zipfile` plus `zlib,gzip,bz2lzma,tarfile`
+
+https://docs.python.org/3/library/zipfile.html#module-zipfile
+
+## Unit Testing
+
+There are two methods for unit testing. The simpliest is the `doctest` module where a test case can be embedded in the `docstring`. The most flexible is the `unittest` module.
+
+### doctest
+
+_Note: Interactively, each line must be executed individually
+
+```py
+import doctest
+def cubed(n):
+    """Computes a number raised to the 3rd power.
+
+    >>> print(cubed(5))
+    125
+    """
+    return n ** 3
+
+def squared(n):
+    """Computes a number raised to the 2nd power.
+
+    >>> print(squared(5))
+    25
+    """
+    return n ** 2
+
+doctest.testmod()
+```
+
+### unittest
+
+With the `unitest`, `asserts` can be used to do a more thorough unit test.
+
+```py
+def cubed(n):
+    return n ** 3
+
+def squared(n):
+    return n ** 2
+
+import unittest
+class TestCases(unittest.TestCase):
+
+    def test_cubed(self):
+        self.assertEqual(cubed(5), 125)
+
+    def test_squared(self):
+        self.assertEqual(squared(4), 15)
+
+unittest.main()
+```
+## logging
+
+Logging message are routed to `sys.stderr`. The `info` and `warning` messages are routed to `sys.stdout`.
+
+```py
+import logging
+logging.info('This is a info message')
+logging.warning('This is a warning message')
+logging.error('This is an error message')
+logging.critical('This is a critial message')
+logging.debug('This is a debug message')
+```
+
+# Miscellaneous
+
+- `type(x)` - returns the type of the variable
+- `id(x)` - returns the memory location of the variable
+- `a, b, c = 1, "ABC", True` - multiple assignments
+- `help(f)` - displays function name and docstring (if exists)
+- `*parms` - list of parm items
+- `**key` - parmaters passed in as key[value]
+    ```py
+    def dictionary(**key):
+    return { 'key': key['code'] }
+
+    dictionary(code="XYZ")
+    # displays { 'key': 'XYZ' }
+    ```
