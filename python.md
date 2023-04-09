@@ -293,6 +293,9 @@ def msg(code: int, message: str) -> str:
 
 ## collections
 
+* `OrderedDict()` - dictionary with sorted keys
+* `deque` - pushes and pops from either end (more efficient than list)
+
 ### list
 
 The List is a simple collection of instances. Instances can be added to the front or back of the collection, added within the collection, or removed from the collection
@@ -410,9 +413,14 @@ To create a package, create a new folder within the project folder like `c:\myPr
 
 Create a module named myPackage.py.
 
-Create an empty package named `__init__.py`
+Create an empty package named `__init__.py`. This file lets Python know that the folder is a package.
 
-Create other 
+Create other myFunctions.py in the same folder
+
+```py
+from myPackage import myFunctions
+myFunctions.fn();
+```
 
 ## Files
 
@@ -497,13 +505,29 @@ Just about any data structure can be passed to `json.dumps(x)` and written out a
 
 ## exceptions
 
-## class
+## Class
 
 Classes support object-oriented programming by bundling data and the methods that operate on that data.
 
-`self` is similar in Python to `this` in C# or Java. `seld` must be the first parameter in all methods within a class. No data must be passed to `self` so only any other parameter must be passed.
+Class properties are supported by declaring properties within the class but outside all functions. They are reference by the class name.
+
+Access modifiers `public`, `private`, and `protected` are defined by the absense or inclusion of underscores on attributes
+
+* `No underscores` - the attribute is public
+* `single underscore` - the attribute is protected
+* `double underscore` - the attribute is private
+
+```py
+class Student:
+
+    school = "MAX Technical Training"
+```
+
+`self` is similar in Python to `this` in C# or Java. `self` must be the first parameter in all methods within a class. No data must be passed to `self` so only any other parameter must be passed.
 
 All references to properties or methods within a class must prefix with `self`.
+
+To hava class properties, create a get and set function that read and updates a private attribute. Decorate the get function with `@property` and the set function with `@[attributename].setter`. This is illustrated with the two `name` functions below.
 
 _Format_:
 
@@ -511,18 +535,37 @@ _Format_:
 class Customer:
     """Models a customer."""
 
+    # class attribute
+    type = "Regional"
+
+    @classmethod
+    def setType(type):
+        Customer.type = type
+
+    # constructor
     def __init__(self, name, sales=0): # constructor
+        # instance attributes
         self.setName(name)
         self.setSales(amount)
 
-    def setName(self, name):
-        self.name = name
+    # instance function
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        self.__name = name
 
     def setSales(self, sales):
         self.amount(sales)
 
     def toString(self):
         return f'name={self.name}, sales={self.sales}'
+
+    @staticmethod
+    def pi():
+        return 3.1415
 
 ```
 
@@ -532,8 +575,11 @@ class Customer:
 
 The Operating System library functions:
 
+* `os.mkdir(x)` - create directory 
 * `os.getcwd()` - returns current working directory
 * `os.chdir(x)` - change directory
+* `os.rmdir(x)` - remove directory
+* `os.listdir(x)` - list files and subdirectories
 * `os.system(x)` - execute command
 
 * `dir(os)` - returns all modules functions
@@ -553,6 +599,12 @@ For every day op/sys work, the `shutil` library works well
 * `glob.glob("*.py")` - returns a list of files ending in ".py"
 
 ### sys
+
+* `argv` - arguments passed into the module
+* `exit` - ends module
+* `maxsize` - maximum size of integer
+* `path` - search path for modules
+* `version` - version of python interpreter
 
 `sys` provides access to parameters pass when a python app is executed from the command line
 
@@ -600,6 +652,8 @@ The `math` module provides many mathematical functions. Some commonly used busin
 * `fmod(x,y)` - modulo; (i.e. x % y in C#)
 * `fsum([x])` - precise sum of collection (better than `sum()`)
 * `pow(x,y)` - raises x to the power of y
+* `sqrt(x)` - square root of x
+* `pi` - Pi (3.1416)
 
 ### random
 
@@ -739,6 +793,47 @@ logging.critical('This is a critial message')
 logging.debug('This is a debug message')
 ```
 
+# Pip (package installer for Python)
+
+_Installation_:
+
+Pip should be installed when Python is installed. Do not type the dollar sign. Check it with:
+
+```bash
+$ pip --version
+```
+
+_Upgrade pip version_:
+
+```bash
+$ python -m pip install -U pip
+```
+
+_Help_:
+
+```bash
+# displays general help
+$ pip help
+# displays installed packages
+$ pip list
+# displays package detail
+$ pip show requests
+```
+
+## Installing packages
+
+```sh
+# install most current version
+$ pip install [project-name]
+# uninstall package
+$ pip uninstall [project-name]
+# install specific version
+$ pip install [project-name==2.4]
+# install compatible version
+$ pip install [project-name~=2.4]
+
+```
+
 # Miscellaneous
 
 - `type(x)` - returns the type of the variable
@@ -754,3 +849,122 @@ logging.debug('This is a debug message')
     dictionary(code="XYZ")
     # displays { 'key': 'XYZ' }
     ```
+- `__name__` - returns the name of the function
+- `__main__` - 
+- `random` - module for random numbers
+
+## Iterator function
+
+A function that is used as the collection in a `for` statements. The key is to use the `yield [object]`. Outside of a loop, the `next(iterator())` will return the next item.
+
+```py
+def iterator():
+    for i in range(10):
+        yield i
+
+for i in iterator():
+    print(f"i, {i**2}")
+```
+
+A generator expression is a simply way to create an iterator.
+
+```py
+ evens = (x * 2 for x in range(10))
+ for(i in evens):
+    print(i)
+```
+
+## List Comprehension
+
+__Format__:
+
+```py
+# [expression of variable in iterable if condition]
+arr = [x of x in range(100) if x % 13 == 0]
+print(arr)
+# displays: [0, 13, 26, 39, 52, 65, 78, 91]
+```
+
+## Recursion
+
+When a function calls itself.
+
+The factorial of a number is the product of all the numbers up to and including the number itself. So six factorial (6!) evaluates to 6 * 5 * 4 * 3 * 2 * 1. Another way to calculate 6! is 6 * 5!
+
+```py
+def fact(n):
+    if n == 1:
+        return n
+    return n * fact(n - 1)
+
+fact(6)
+# returns 720
+```
+
+## Execptions
+
+Handling exceptions.
+
+The `try:, except:, else:, finally:` clauses are to handle exceptions.
+
+```py
+try:
+    # statements to monitor
+except [TypeError]:
+    # statements to execute on exception
+except [TypeError]:
+    # statements to execute on exception
+else:
+    # statements if error free
+finally:
+    # statements always executed
+```
+
+Generating exceptions.
+
+```py
+# inherits from Exception
+class AbcException(Exception):
+    pass
+
+try:
+    raise AbcException
+except AbcException:
+    print("An AbcException is raised");
+```
+
+## Assert
+
+When an `Assert` statement is encountered, the program continues if the assertion is true. If false, an `AssertionError` is raised.
+
+```py
+SAT = getSatFromExternalApp()
+assert SAT >= 400 and SAT <= 1600, "SAT out of range!"
+# continue processing SAT
+```
+
+## Sqllite
+
+ref: https://www.tutorialsteacher.com/python/database-crud-operation-in-python
+
+```py
+import sqllite3
+```
+
+## GUI
+
+ref: https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python
+
+```py
+from tkinter import *
+window=Tk()
+btn=Button(window, text="This is Button widget", fg='blue')
+btn.place(x=80, y=100)
+lbl=Label(window, text="This is Label widget", fg='red', font=("Helvetica", 16))
+lbl.place(x=60, y=50)
+txtfld=Entry(window, text="This is Entry Widget", bd=5)
+txtfld.place(x=80, y=150)
+window.title('Hello Python')
+window.geometry("300x200+10+10")
+window.mainloop()
+```
