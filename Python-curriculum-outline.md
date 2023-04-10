@@ -31,8 +31,28 @@
         * 13 * 27 -> 351
     - Can manipulate characters
         * "Noah" + " " + "Phence" -> "Noah Phence"
+    - plus(+)
+    - minus(-)
+    - times(*)
+    - divide(/)
+    - divide (int) (//)
+    - power(**)
 *** "print(s)"
     - Displays data inside parentheses on console
     - "print" must be in lowercase
     - "s" can be numbers, letters, or symbols
-    - numbers can have decimal point
+    - numbers can have a decimal point
+    - each print(s) statement on its own line
+*** variables
+    - a variable is a name for a "bucket" that holds data
+    - names must start with a letter or underscore
+    - remaining characters can be letters, numbers, or underscores
+    - data remains until different data replaces it
+    - all data is of a particular "type"
+*** types
+    - numbers: integers, decimals, engineering
+    - strings: "abc" or '123'; collection of characters
+    - booleans: True and False; only two possible values
+    - lists: [1,2,3] or ['a','b','c']; collection of types
+    - dictionaries: states['OH'] returns "Ohio"; key/value pairs
+    - tuples: (200, 'Ok'), (204, 'No content')
