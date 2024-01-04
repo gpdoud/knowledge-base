@@ -37,3 +37,11 @@ inject()
 pipes
 
     all pipes used must be imported
+
+HttpClient
+
+    Because there is no 'import' in services, to import HttpClient for user
+    by services requires the following changes to `app.config.ts`:
+
+    1) Add `import { provideHttpClient} from '@angular/common/http';``
+    2) Add `provideHttpClient()` to providers
