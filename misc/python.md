@@ -1,5 +1,7 @@
 # Python 3.11
 
+Python is a scripting language meaning there is not compiler needed to turn a python source file into executable code. It has an extensive library of functions and classes. 
+
 ## Variables and Types
 
 Variable names should start with a letter or underscore. After the first character, other characters can be letters, numbers, or underscores. 
