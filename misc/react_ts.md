@@ -19,6 +19,27 @@ return (
 )
 ```
 
+## `useContext`
+
+useContext allows passing data to any components that need it.
+
+```tsx
+// Create the context. It may be exported
+export const CustomerContext = createContext<Customer>({ id: 0, name: '' } as Customer
+);
+// Retrieve the context
+let context = useContext(CustomerContext);
+// Change the context
+context = { id: 1, name: 'DSI' };
+
+return (
+  <div>
+    <h1>id: {context.id} name: {context.name}</h1>
+  </div>
+)
+
+```
+
 ## `React.FC`
 
 FC stands for function component and it provides a simplier syntax for component that takes props. It also allows default values for the props.
