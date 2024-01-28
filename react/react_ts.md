@@ -1,5 +1,61 @@
 # React/Typescript
 
+## `useReducer()`
+
+This hook is similar to the `useState()` but it likely used in a more complex environment. When using the reducer, it operates by making a call to a function called `reducer` that takes two parameters: the state and the action.
+
+```tsx
+import { useReducer } from "react";
+
+enum ActionType { 
+  Add = 'add', 
+  Sub = 'sub' 
+}
+
+interface IAction {
+  type: ActionType,
+  payload: number
+}
+
+interface IState {
+  sum: number
+}
+
+function reducer(state: IState, action: IAction) {
+  const { type, payload } = action;
+  switch(type) {
+    case ActionType.Add:
+      return {
+        ...state, 
+        sum: state.sum + payload
+      }
+    case ActionType.Sub:
+      return {
+        ...state, 
+        sum: state.sum - payload
+      }
+    default: 
+      return state;
+  }
+}
+
+export default function App() {
+
+  const [state, dispatch] = useReducer(reducer, { sum: 0 });
+
+  const Add = () => dispatch({ type: ActionType.Add, payload: 1 });
+  const Sub = () => dispatch({ type: ActionType.Sub, payload: 1 });
+  
+  return (
+    <>
+      <label>Count: {state.sum}</label>
+      <button onClick={Add}>Add</button>
+      <button onClick={Sub}>Sub</button>
+    </>
+  )
+}
+```
+
 ## `useState()`
 
 This hook is used like a variable within a component. It allows reading and setting the value of data along with defining the inital state of the data. It can be used as a generic allowing the defining the type when created.
