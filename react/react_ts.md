@@ -1,5 +1,29 @@
 # React/Typescript
 
+## `rendering & rerendering`
+
+A component is rendered the first time it is encountered.
+
+After the initial render, if the state is a number, string, or boolean, the component will be rerendered if the state changes. If the state does not change, the component is NOT rerendered.
+
+If the state is a composite component (i.e. record), and the object containing the data is updated with properties that change, the component will NOT be rerendered. To get the component to rerender, you have to change to object to a different object.
+
+```tsx
+  let initCust = { id: 0, name: 'DSI' };
+  const [customer, setCustomer] = setState(initCust);
+
+  const changeCustomer =  (newId, newName) => {
+    initCust.id = newId;
+    initCust.name = newName;
+    setCustomer(initCust); // this does not rerender the component because it is using the same object (initCust)
+
+    newCust = [...initCust]; // copies initCust
+    newCust.id = newId;
+    newCust.name = newName;
+    setCustomer(newCust); // this does rerender the component
+  }
+```
+
 ## `useReducer()`
 
 This hook is similar to the `useState()` but it likely used in a more complex environment. When using the reducer, it operates by making a call to a function called `reducer` that takes two parameters: the state and the action.
