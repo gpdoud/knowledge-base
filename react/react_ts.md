@@ -4,7 +4,7 @@
 
 This hook is used like a variable within a component. It allows reading and setting the value of data along with defining the inital state of the data. It can be used as a generic allowing the defining the type when created.
 
-When the data in `useState()` is changed, if it is used on the UI, the UI is rerendered automatically.
+When the data in `useState()` is changed, if it is used on the UI, the UI is rerendered automatically. If the state value does NOT change, the component is not rerendered.
 
 When setting the property, if it is a complex object, the entire object my be set.
 
@@ -45,7 +45,7 @@ useEffect(() => {
 
 return (
   <button 
-    onClick={() => setCounter(counter + 1)}>
+    onClick={() => setCounter(c => c + 1)}>
       Increment
     </button>
 )
