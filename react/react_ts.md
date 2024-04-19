@@ -9,19 +9,19 @@ After the initial render, if the state is a number, string, or boolean, the comp
 If the state is a composite component (i.e. record), and the object containing the data is updated with properties that change, the component will NOT be rerendered. To get the component to rerender, you have to change to object to a different object.
 
 ```tsx
-  let initCust = { id: 0, name: 'DSI' };
-  const [customer, setCustomer] = setState(initCust);
+let initCust = { id: 0, name: "DSI" };
+const [customer, setCustomer] = setState(initCust);
 
-  const changeCustomer =  (newId, newName) => {
-    initCust.id = newId;
-    initCust.name = newName;
-    setCustomer(initCust); // this does not rerender the component because it is using the same object (initCust)
+const changeCustomer = (newId, newName) => {
+  initCust.id = newId;
+  initCust.name = newName;
+  setCustomer(initCust); // this does not rerender the component because it is using the same object (initCust)
 
-    newCust = [...initCust]; // copies initCust
-    newCust.id = newId;
-    newCust.name = newName;
-    setCustomer(newCust); // this does rerender the component
-  }
+  newCust = [...initCust]; // copies initCust
+  newCust.id = newId;
+  newCust.name = newName;
+  setCustomer(newCust); // this does rerender the component
+};
 ```
 
 ## `useReducer()`
@@ -31,52 +31,51 @@ This hook is similar to the `useState()` but it likely used in a more complex en
 ```tsx
 import { useReducer } from "react";
 
-enum ActionType { 
-  Add = 'add', 
-  Sub = 'sub' 
+enum ActionType {
+  Add = "add",
+  Sub = "sub",
 }
 
 interface IAction {
-  type: ActionType,
-  payload: number
+  type: ActionType;
+  payload: number;
 }
 
 interface IState {
-  sum: number
+  sum: number;
 }
 
 function reducer(state: IState, action: IAction) {
   const { type, payload } = action;
-  switch(type) {
+  switch (type) {
     case ActionType.Add:
       return {
-        ...state, 
-        sum: state.sum + payload
-      }
+        ...state,
+        sum: state.sum + payload,
+      };
     case ActionType.Sub:
       return {
-        ...state, 
-        sum: state.sum - payload
-      }
-    default: 
+        ...state,
+        sum: state.sum - payload,
+      };
+    default:
       return state;
   }
 }
 
 export default function App() {
-
   const [state, dispatch] = useReducer(reducer, { sum: 0 });
 
   const Add = () => dispatch({ type: ActionType.Add, payload: 1 });
   const Sub = () => dispatch({ type: ActionType.Sub, payload: 1 });
-  
+
   return (
     <>
       <label>Count: {state.sum}</label>
       <button onClick={Add}>Add</button>
       <button onClick={Sub}>Sub</button>
     </>
-  )
+  );
 }
 ```
 
@@ -124,7 +123,7 @@ useEffect(() => {
 },[counter]);
 
 return (
-  <button 
+  <button
     onClick={() => setCounter(c => c + 1)}>
       Increment
     </button>
@@ -137,18 +136,22 @@ useContext allows passing data to any components that need it.
 
 ```tsx
 // Create the context. It may be exported
-export const CustomerContext = createContext<Customer>({ id: 0, name: '' } as Customer
-);
+export const CustomerContext = createContext<Customer>({
+  id: 0,
+  name: "",
+} as Customer);
 // Retrieve the context
 let context = useContext(CustomerContext);
 // Change the context
-context = { id: 1, name: 'DSI' };
+context = { id: 1, name: "DSI" };
 
 return (
   <div>
-    <h1>id: {context.id} name: {context.name}</h1>
+    <h1>
+      id: {context.id} name: {context.name}
+    </h1>
   </div>
-)
+);
 ```
 
 ## `useRef()`
@@ -195,7 +198,7 @@ export const TestFC: React.FC<Props> = ({code, name, email}) => {
 
     return (
         <>
-        <p>{code}</p> 
+        <p>{code}</p>
         <p>{name}</p>
         <p>{email}</p>
         </>

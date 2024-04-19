@@ -1,0 +1,135 @@
+Notes from AI class
+
+from Mick Knutson | Instructor to everyone:    11:01 AM
+- https://www.youtube.com/watch?v=bk-nQ7HF6k4
+- https://gemini.google.com/app
+- https://www.bing.com/search?q=convert%20blog%20post%20to%20markdown%20format&qs=ds&form=ATCVAJ
+- https://www.bing.com/
+- https://www.bing.com/chat?q=convert+blog+post+to+markdown+format&qs=ds&form=ATCVAJ&showconv=1
+- https://github.com/mickknutson/github_copilot_master_class
+
+Automate processes
+- https://ifttt.com/explore
+
+Generative AI
+https://en.wikipedia.org/wiki/Generative_artificial_intelligence
+
+ML - Machine Learning
+LLM - Large Language Model (ChatGPT)
+PII - Personal Identifiable Information
+GPT - Gerative Pre-Trained Transformer (a LLM)
+
+https://openai.com/pricing
+https://platform.openai.com/playground/chat
+https://chat.openai.com
+https://mistral.ai/
+https://platform.openai.com/playground?mode=chat&model=gpt-4-turbo-preview
+https://groq.com/
+https://claude.ai
+https://pi.ai/discover
+https://gemini.google.com/app
+https://www.bing.com
+
+https://chat.openai.com
+https://mistral.ai/
+https://platform.openai.com/playground?mode=chat&model=gpt-4-turbo-preview
+https://groq.com/
+https://claude.ai
+https://pi.ai/discover
+https://gemini.google.com/app
+https://www.bing.com
+
+https://actions.tldrnewsletter.com/web-version?ep=1&lc=8e96ddb8-b3a1-11ed-8644-33c00cd07e37&p=50171098-fd6b-11ee-aebf-6726f6089f31&pt=campaign&t=1713446317&s=72c9944702e79a114f8a78d31690e86dc877388138fc372fcca746d3b29e1c19
+
+https://openai.com/sora
+
+https://support.anthropic.com/en/articles/8324991-about-claude-pro-usage
+
+ElevenLabs
+https://elevenlabs.io
+Canva
+https://www.canva.com
+DeepAI
+https://deepai.org
+Replit
+https://replit.com/
+Copilot
+https://github.com/features/copilot
+
+https://theresanaiforthat.com
+https://huggingface.co
+
+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
+
+The URLs of the Streamlit app for this class are:
+https://learningvoyage.streamlit.app   (this is text generation)
+https://learningvoyagevision.streamlit.app   (this is image generation)
+
+https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv
+https://www.aiforwork.co/
+https://promptden.com
+
+Create an image of a green clover with only three leaves with a futuristic look
+
+create a 3d logo for "DOUD SYSTEMS" using a green shamrock with light green background
+
+groq api key
+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
+
+<CODE>
+import os
+from groq import Groq
+client = Groq(
+    api_key=os.environ.get("GROQ_API_KEY"),
+)
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "What is 2 plus 3?",
+        }
+    ],
+    model="mixtral-8x7b-32768",
+)
+print(chat_completion.choices[0].message.content)
+</CODE>
+
+https://github.com/f/awesome-chatgpt-prompts/blob/main/prompts.csv
+
+https://arxiv.org/abs/1706.03762
+
+https://drlee.io/an-intuitive-explanation-of-attention-is-all-you-need-the-paper-that-revolutionized-ai-and-39aac5827411
+
+https://botnation.ai
+
+https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4
+
+https://wasitai.com
+https://quillbot.com/ai-content-detector
+https://www.scribbr.com/ai-detector
+https://contentdetector.ai
+https://copygenius.io
+https://copyleaks.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
