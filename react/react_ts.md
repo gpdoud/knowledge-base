@@ -1,5 +1,11 @@
 # React/Typescript
 
+## `creating a react project with vite`
+
+```
+npm create vite@latest [project-name]
+```
+
 ## `rendering & rerendering`
 
 A component is rendered the first time it is encountered.
