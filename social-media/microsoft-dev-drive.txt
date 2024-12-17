@@ -1,0 +1,53 @@
+Create a Dev Drive for better software development reliability and performance
+
+It is not news to any software developer that programs are getting more complex and require more lines of code. Our workstations continue to contain faster CPUs, more and faster memory, and more and faster disk. So our builds are builds are constantly getting larger and slower. We do many builds every working day. If we could have those builds done even a few seconds faster, we can get more done and complete our projects more quickly. Who wouldn't want that?
+
+A brief about ReFS
+
+In February 2024, Microsoft released a new type of storage called "Resilient File System" (ReFS). It's focus is manageing files that change often and it protects against file corruption more effectively for our development projects.
+
+A quick overview of the major features of ReFS are about:
+
+1) Resiliency
+
+ReFS can watch for file corruptions occurring on disk and correct most of them while keeping the disk operational. If ReFS space is being mirrored, it will use the mirrored space to correct the corruption. ReFS also includes a "scrubber" which occasionally scans the storage space for the beginnings of corrupted files and proactively resolves the problem.
+
+2) Performance
+
+This is one of the most valuable features for using ReFS. Performance testing shows DotNet build time improvements of around 20% when source code and project files are stored in ReFS. 
+
+3) Scalability
+
+While the scalability may not apply to all, ReFS is built to very large data stores up to millions of terabytes. We might not need that much managed storage today, but it's likely we will need it in the future.
+
+Requirements to create a Dev Drive:
+
+    * Windows 11 and it must be Build #10.0.22621.2338 or later
+    * At least 8 Gb of memory but 16 Gb is recommended
+    * At least 50 Gb of available disk space
+
+Setting up a Dev Drive on Windows 11
+
+These instructions assume that you'll be using some of unallocated space on an existing drive to create the Dev Drive. You can repartition some of an existing drive then use it for the Dev Drive. You can also setup the Dev Drive as Virtual Hard Disk (VHD). Here is the link to the Microsoft Learn site for step-by-step instructions.
+
+https://learn.microsoft.com/en-us/windows/dev-drive/
+
+What files should be stored in the Dev Drive?
+
+In the Dev Drive, you should put the source and project files. You can also put the output files generated from your build process. Just about any files that goes into or is generated as output from your build can be put in the Dev Drive. You can also clone a repository into the Dev Drive.
+
+The Dev Drive should not contain executable or library files other than those being created by a build process. So don't put Visual Studio in the Dev Drive.
+
+In Summary
+
+If most projects are small to medium size, you may not see a great performance improvement with Dev Drive. But the resiliency of the Dev Drive is enough of a reason to use it anyway. If you've created your project files under a common driectory, it is very easy to move those files into the Dev Drive.
+
+Feel free to comment on your experience. Keep coding ...
+
+References (valid as of March 2024)
+
+Resilient File System (ReFS)
+https://learn.microsoft.com/en-us/windows-server/storage/refs/refs-overview
+
+Dev Drive for Performance Improvements in Visual Studio and Dev Boxes!
+https://devblogs.microsoft.com/visualstudio/devdrive/
